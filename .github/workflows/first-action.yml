@@ -13,7 +13,7 @@ jobs:
 
       - name: Print Goodbye
         run: 
-          echo "Done, Bye!"
+          echo "Done, Bye!",
           echo "See you again"
         
     
