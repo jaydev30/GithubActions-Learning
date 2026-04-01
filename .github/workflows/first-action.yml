@@ -1,26 +1,26 @@
-# name: First Workflow
+name: First Workflow
 
-# on:
-#   #workflow_dispatch    # Manually trigger the action
-#   push:
-#     branches: [ main ]  # Trigger the action on push to main branch
+on:
+  #workflow_dispatch    # Manually trigger the action
+  push:
+    branches: [ main ]  # Trigger the action on push to main branch
 
-# jobs:
-#   basic:
-#     runs-on: ubuntu-latest
+jobs:
+  basic:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Print greeting
-#         run: echo "Hello World"
+    steps:
+      - name: Print greeting
+        run: echo "Hello World"
   
-#   exit:
-#     runs-on: ubuntu-latest
+  exit:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Print Goodbye
-#         run: |
-#           echo "Done, Bye!"
-#           echo "See you again"
+    steps:
+      - name: Print Goodbye
+        run: |
+          echo "Done, Bye!"
+          echo "See you again"
       
-#       - name: Today's date
-#         run: date
+      - name: Today's date
+        run: date
