@@ -30,4 +30,4 @@ jobs:
 
     steps:
       - name: Get info
-        run: echo "{{ toJSON($github)}}"
+        run: echo "${{ toJSON(github)}}"
