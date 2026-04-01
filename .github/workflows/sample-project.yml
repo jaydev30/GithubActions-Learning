@@ -6,8 +6,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-latest     # Every Job has its own runner
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -24,3 +23,25 @@ jobs:
       - name: Run test
         working-directory: ./sample-project
         run: npm test
+  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        working-directory: ./sample-project
+        run: npm ci
+
+      - name: Build Project
+        working-directory: ./sample-project
+        run: npm run build
+
+      - name: Deployed
+        run: echo "Deploying..."
