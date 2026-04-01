@@ -25,6 +25,7 @@ jobs:
         run: npm test
   
   deploy:
+    needs: [test]              # Only runs if "test" job finishes successfully
     runs-on: ubuntu-latest
     steps:
       - name: Get code
