@@ -25,9 +25,9 @@ jobs:
       - name: Today's date
         run: date
     
-    info:
-      runs-on: ubuntu-latest
+  info:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Get info
-          run: echo "{{ toJSON($github)}}"
+    steps:
+      - name: Get info
+        run: echo "{{ toJSON($github)}}"
