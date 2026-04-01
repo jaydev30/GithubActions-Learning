@@ -10,11 +10,15 @@ jobs:
     steps:
       - name: Print greeting
         run: echo "Hello World"
+  
+  exit:
+    runs-on: ubuntu-latest
 
+    steps:
       - name: Print Goodbye
         run: |
           echo "Done, Bye!"
           echo "See you again"
-        
-    
-    
+      
+      - name: Today's date
+        run: "TODAY=$(date +'%Y-%m-%d') && echo Today's date is $TODAY"
