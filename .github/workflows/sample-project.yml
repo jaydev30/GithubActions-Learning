@@ -1,4 +1,4 @@
-name: Test Project
+name: Sample Project
 
 on:
   workflow_dispatch:

@@ -1,0 +1,30 @@
+name: Test Project
+
+on:
+  workflow_dispatch:
+
+jobs:
+  initial:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        working-directory: ./test-project
+        run: npm ci
+
+      - name: Lint code
+        working-directory: ./test-project
+        run: npm run lint
+
+      - name: Test code
+        working-directory: ./test-project
+        run: npm run test
+
+      - name: Build code
+        working-directory: ./test-project
+        run: npm run build
+
+      - name: Deploy code
+        run: echo "Deploying..."
