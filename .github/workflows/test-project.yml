@@ -42,6 +42,7 @@ jobs:
         run: npm run build
 
       - name: Output file name
+        working-directory: ./test-project
         id: publish
         run: find public/*.svg -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
 
