@@ -2,8 +2,8 @@ name: First Workflow
 
 on:
   workflow_dispatch:    # Manually trigger the action
-  push:
-    branches: [ main ]  # Trigger the action on push to main branch
+  # push:
+  #   branches: [ main ]  # Trigger the action on push to main branch
 
 jobs:
   basic:

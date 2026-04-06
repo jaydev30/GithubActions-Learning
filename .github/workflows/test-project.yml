@@ -2,6 +2,8 @@ name: Test Project
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ main ]
 
 jobs:
   initial:
@@ -22,9 +24,30 @@ jobs:
         working-directory: ./test-project
         run: npm run test
 
+  build:
+    needs: initial
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        working-directory: ./test-project
+        run: npm ci
+
       - name: Build code
         working-directory: ./test-project
         run: npm run build
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy code
         run: echo "Deploying..."
