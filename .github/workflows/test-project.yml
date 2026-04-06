@@ -27,6 +27,8 @@ jobs:
   build:
     needs: initial
     runs-on: ubuntu-latest
+    outputs:
+      script-file: ${{ steps.publish.script-file }}
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -39,6 +41,10 @@ jobs:
         working-directory: ./test-project
         run: npm run build
 
+      - name: Output file name
+        id: publish
+        run: find public/*.svg -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -49,10 +55,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist-files
+      # - name: Download artifacts
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: dist-files
       - name: List artifacts
         run: ls
       - name: Deploy code
