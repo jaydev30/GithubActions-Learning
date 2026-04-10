@@ -87,7 +87,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output report
-        working-directory: ./test-conditions
         run: |
           echo "Something went wrong"
           echo "Please check..."
