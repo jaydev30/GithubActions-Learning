@@ -13,7 +13,7 @@ jobs:
       - name: Cache dependencies
         id: cache
         working-directory: ./test-conditions
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
@@ -30,7 +30,7 @@ jobs:
       - name: Cache dependencies
         working-directory: ./test-conditions
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
@@ -41,6 +41,7 @@ jobs:
         working-directory: ./test-conditions
         run: npm run test
       - name: Upload test report
+        working-directory: ./test-conditions
         uses: actions/upload-artifact@v3
         with:
           name: test-report
@@ -54,7 +55,7 @@ jobs:
       - name: Cache dependencies
         working-directory: ./test-conditions
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
