@@ -81,3 +81,13 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  report:
+    needs: [lint, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output report
+        working-directory: ./test-conditions
+        run: |
+          echo "Something went wrong"
+          echo "Please check..."
