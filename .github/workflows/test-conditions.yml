@@ -74,11 +74,8 @@ jobs:
           name: dist-files
           path: dist
   deploy:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Call Reusbale workflow
-        uses: ./.github/workflows/reusable.yml
+    needs: build
+    uses: ./.github/workflows/reusable.yml
   report:
     needs: [lint, deploy]
     if: failure()
